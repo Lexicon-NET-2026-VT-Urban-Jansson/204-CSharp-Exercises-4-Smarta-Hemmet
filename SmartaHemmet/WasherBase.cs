@@ -3,6 +3,6 @@
     internal class WasherBase
     {
 
-        public void StartWash();
+        // public void StartWash();
     }
 }
