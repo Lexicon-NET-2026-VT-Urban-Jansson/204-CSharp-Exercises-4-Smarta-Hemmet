@@ -20,7 +20,7 @@ namespace SmartaHemmet
         }
         public void PrintCleaningEnergy()
         {
-            Console.WriteLine($"Robotdammsugare {Brand} har förbrukat {CleaningEnergy} kWh.");
+            Console.WriteLine($"Robotdammsugare {Brand} har förbrukat {CleaningEnergy} kWh per städning.");
         }
     }
 

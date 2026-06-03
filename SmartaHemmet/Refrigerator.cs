@@ -20,7 +20,7 @@ namespace SmartaHemmet
         }
         public void PrintCoolingEnergy()
         {
-            Console.WriteLine($"Kylskåp {Brand} har förbrukat {CoolingEnergy} kWh.");
+            Console.WriteLine($"Kylskåp {Brand} har förbrukat {CoolingEnergy} kWh per dag.");
         }
     }
 }

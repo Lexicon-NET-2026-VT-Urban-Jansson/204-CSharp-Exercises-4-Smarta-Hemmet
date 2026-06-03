@@ -20,7 +20,7 @@ namespace SmartaHemmet
         }
         public void PrintWashEnergy()
         {
-            Console.WriteLine($"Tvättmaskin {Brand} har förbrukat {WashEnergy} kWh.");
+            Console.WriteLine($"Tvättmaskin {Brand} har förbrukat {WashEnergy} kWh per tvätt.");
         }
     }
 }

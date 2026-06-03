@@ -20,7 +20,7 @@ namespace SmartaHemmet
         }
         public void PrintHeatingEnergy()
         {
-            Console.WriteLine($"Ugn {Brand} har förbrukat {HeatingEnergy} kWh.");
+            Console.WriteLine($"Ugn {Brand} har förbrukat {HeatingEnergy} kWh per timme.");
         }
     }
 }

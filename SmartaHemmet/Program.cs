@@ -1,34 +1,125 @@
-﻿namespace SmartaHemmet
+﻿
+using SmartaHemmet;
+using System;
+using System.Collections.Generic;
+class Program
 {
-    internal class Program
+    // ------------------------------------------------------------------------
+    // *** Main ***
+    // ------------------------------------------------------------------------
+    static void Main()
     {
-        static void Main(string[] args)
+        List<object> devices = new List<object>();
+        // TODO-DONE:
+        // Skapa minst fyra objekt:
+        // Washer, Refrigerator, Oven och RobotVacuum.
+        // Lägg till dem i listan devices.
+        devices.Add(new Washer("Siemens iQ500", 8));
+        devices.Add(new Refrigerator("Electrolux 900", 4));
+        devices.Add(new Oven("Whirlpool OKZ9", 300));
+        devices.Add(new RobotVacuum("Roborock Qrevo Edge", 95));
+
+        RunMorningRoutine(devices);
+        Console.WriteLine();
+        ReportAllEnergy(devices);
+    }
+
+    // ------------------------------------------------------------------------
+    // *** RunMorningRoutine ***
+    // ------------------------------------------------------------------------
+    static void RunMorningRoutine(List<object> devices)
+    {
+        foreach (object device in devices)
         {
-            Console.WriteLine("Hej! Välkommen till det Smarta Hemmet!");
+            // TODO-DONE:
+            // 1. Kontrollera vilken typ device är.
+            // 2. Casta till rätt typ.
+            // 3. Anropa rätt startmetod.
+            // 4. Anropa rätt stoppmetod.
 
-            // Testar Washer
-            var washer = new Washer("Siemens iQ500", 8);
-            washer.StartWash();
-            washer.PrintWashEnergy();
-            washer.StopWash();
+            switch (device)
+            {
+                // Pattern matching för att casta:
+                // Washer washer = (Washer)device;
+                case Washer washer:
+                    washer.StartWash();
+                    washer.StopWash();
+                    break;
 
-            // Testar Refrigerator
-            var refrigerator = new Refrigerator("Electrolux", 4);
-            refrigerator.StartCooling();
-            refrigerator.StopCooling();
-            refrigerator.PrintCoolingEnergy();
+                // Pattern matching för att casta:
+                // Refrigerator refrigerator = (Refrigerator)device;
+                case Refrigerator refrigerator:
+                    refrigerator.StartCooling();
+                    refrigerator.StopCooling();
+                    break;
 
-            // Testar Oven
-            var oven = new Oven("Whirlpool OKZ9", 300);
-            oven.StartHeating();
-            oven.StopHeating();
-            oven.PrintHeatingEnergy();
+                // Pattern matching för att casta:
+                // Oven oven = (Oven)device;
+                case Oven oven:
+                    oven.StartHeating();
+                    oven.StopHeating();
+                    break;
 
-            // Testar RobotVacuum
-            var robotVacuum = new RobotVacuum("Roborock Qrevo Edge", 95);
-            robotVacuum.StartCleaning();
-            robotVacuum.StopCleaning();
-            robotVacuum.PrintCleaningEnergy();
+                // Pattern matching för att casta:
+                // RobotVacuum robotVacuum = (RobotVacuum)device;
+                case RobotVacuum robotVacuum:
+                    robotVacuum.StartCleaning();
+                    robotVacuum.StopCleaning();
+                    break;
+                    
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // *** ReportAllEnergy ***
+    // ------------------------------------------------------------------------
+    static void ReportAllEnergy(List<object> devices)
+    {
+        foreach (object device in devices)
+        {
+            // TODO-DONE:
+            // 1. Kontrollera vilken typ device är.
+            // 2. Casta till rätt typ.
+            // 3. Anropa rätt energimetod.
+        
+            switch (device)
+            {
+                case Washer washer:
+                    washer.PrintWashEnergy();
+                    break;
+                case Refrigerator refrigerator:
+                    refrigerator.PrintCoolingEnergy();
+                    break;
+                case Oven oven:
+                    oven.PrintHeatingEnergy();
+                    break;
+                case RobotVacuum robotVacuum:
+                    robotVacuum.PrintCleaningEnergy();
+                    break;
+            }
         }
     }
 }
+
+// ----------------------------------------------------------------------------
+// *** FRÅGOR & SVAR ***
+// ----------------------------------------------------------------------------
+/*
+1. Varför behövde du kontrollera vilken typ varje objekt hade?
+Utan typen kommer man inte åt metoderna.
+
+2. Vad händer om du lägger till en ny klass CoffeeMachine?
+Jag får ett nytt objekt i listan: List<object> devices
+
+3. Vilka metoder måste du ändra om du lägger till CoffeeMachine?
+Main, RunMorningRoutine, ReportAllEnergy + metoderna i nya klassen CoffeeMachine.
+
+4. Vad är problemet med att listan är List<object>?
+Den är inte generell, om vi kört List<T> kunde vi stoppat in vad som helst, bananer, hundar, etc.
+
+5. Vad händer om du råkar glömma en apparattyp i ReportAllEnergy()?
+Energiåtgången för den apparaten kommer inte rapporteras. 
+*/
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
