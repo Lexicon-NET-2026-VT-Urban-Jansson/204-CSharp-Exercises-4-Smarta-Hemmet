@@ -18,6 +18,7 @@ class Program
         devices.Add(new Refrigerator("Electrolux 900", 4));
         devices.Add(new Oven("Whirlpool OKZ9", 300));
         devices.Add(new RobotVacuum("Roborock Qrevo Edge", 95));
+        devices.Add(new CoffeeMachine("Moccamaster One Switch", 10));
 
         RunMorningRoutine(devices);
         Console.WriteLine();
@@ -66,7 +67,13 @@ class Program
                     robotVacuum.StartCleaning();
                     robotVacuum.StopCleaning();
                     break;
-                    
+
+                // Pattern matching för att casta:
+                // CoffeeMachine coffeeMachine = (CoffeeMachine)device;
+                case CoffeeMachine coffeeMachine:
+                    coffeeMachine.StartBrewing();
+                    coffeeMachine.StopBrewing();
+                    break;
             }
         }
     }
@@ -97,6 +104,9 @@ class Program
                 case RobotVacuum robotVacuum:
                     robotVacuum.PrintCleaningEnergy();
                     break;
+                case CoffeeMachine coffeeMachine:
+                    coffeeMachine.PrintBrewingEnergy();
+                    break;
             }
         }
     }
@@ -120,6 +130,11 @@ Den är inte generell, om vi kört List<T> kunde vi stoppat in vad som helst, ba
 
 5. Vad händer om du råkar glömma en apparattyp i ReportAllEnergy()?
 Energiåtgången för den apparaten kommer inte rapporteras. 
+
+6. När jag lade till CoffeeMachine behövde jag ändra...
+Jag behövde ändra på tre ställen i class Program + den helt nya klassen CoffeeMachine.
+
+
 */
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
