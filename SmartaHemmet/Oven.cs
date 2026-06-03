@@ -6,21 +6,21 @@ namespace SmartaHemmet
 {
     internal class Oven(string brand, int maxTemperature)
     {
-        private string? _brand { get; set; } = brand;
-        private int _maxTemperature { get; set; } = maxTemperature;
-        private int _heatingEnergy { get; set; } = 2;
+        public string? Brand { get; set; } = brand;
+        public int MaxTemperature { get; set; } = maxTemperature;
+        public double HeatingEnergy { get; set; } = 2.5;
 
         public void StartHeating()
         {
-            Console.WriteLine($"Startar ugn {_brand}, med maxtemperatur {_maxTemperature} °C.");
+            Console.WriteLine($"Startar ugn {Brand}, med maxtemperatur {MaxTemperature} °C.");
         }
         public void StopHeating()
         {
-            Console.WriteLine($"Stoppar ugn {_brand}.");
+            Console.WriteLine($"Stoppar ugn {Brand}.");
         }
         public void PrintHeatingEnergy()
         {
-            Console.WriteLine($"Ugn {_brand} har förbrukat {_heatingEnergy} kWh.");
+            Console.WriteLine($"Ugn {Brand} har förbrukat {HeatingEnergy} kWh.");
         }
     }
 }

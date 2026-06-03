@@ -7,20 +7,20 @@ namespace SmartaHemmet
 {
     internal class Washer(string brand, int capacityKg)
     {
-        private string? _brand { get; set; } = brand;
-        private int _capacityKg { get; set; } = capacityKg;
-        private int _washEnergy { get; set; } = 2;
+        public string? Brand { get; set; } = brand;
+        public int CapacityKg { get; set; } = capacityKg;
+        public double WashEnergy { get; set; } = 1.2;
 
         public void StartWash() {
-            Console.WriteLine($"Startar tvättmaskin {_brand}, med kapacitet {_capacityKg} kg.");
+            Console.WriteLine($"Startar tvättmaskin {Brand}, med kapacitet {CapacityKg} kg.");
         }
         public void StopWash()
         {
-            Console.WriteLine($"Stoppar tvättmaskin {_brand}.");
+            Console.WriteLine($"Stoppar tvättmaskin {Brand}.");
         }
         public void PrintWashEnergy()
         {
-            Console.WriteLine($"Tvättmaskin {_brand} har förbrukat {_washEnergy} kWh.");
+            Console.WriteLine($"Tvättmaskin {Brand} har förbrukat {WashEnergy} kWh.");
         }
     }
 }

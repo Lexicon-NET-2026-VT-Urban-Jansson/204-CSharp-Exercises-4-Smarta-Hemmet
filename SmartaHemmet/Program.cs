@@ -25,7 +25,7 @@
             oven.PrintHeatingEnergy();
 
             // Testar RobotVacuum
-            var robotVacuum = new RobotVacuum("Roborock Qrevo Edge", 90);
+            var robotVacuum = new RobotVacuum("Roborock Qrevo Edge", 95);
             robotVacuum.StartCleaning();
             robotVacuum.StopCleaning();
             robotVacuum.PrintCleaningEnergy();

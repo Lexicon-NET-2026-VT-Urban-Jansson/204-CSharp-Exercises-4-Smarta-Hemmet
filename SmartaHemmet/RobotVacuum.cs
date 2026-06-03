@@ -6,21 +6,21 @@ namespace SmartaHemmet
 {
     internal class RobotVacuum(string brand, int batteryLevel)
     {
-        private string? _brand { get; set; } = brand;
-        private int _batteryLevel { get; set; } = batteryLevel;
-        private int _cleaningEnergy { get; set; } = 2;
+        public string? Brand { get; set; } = brand;
+        public int BatteryLevel { get; set; } = batteryLevel;
+        public double CleaningEnergy { get; set; } = 0.4;
 
         public void StartCleaning()
         {
-            Console.WriteLine($"Startar robotdammsugare {_brand}, med batterinvå {_batteryLevel} %.");
+            Console.WriteLine($"Startar robotdammsugare {Brand}, med batterinvå {BatteryLevel} %.");
         }
         public void StopCleaning()
         {
-            Console.WriteLine($"Stoppar robotdammsugare {_brand}.");
+            Console.WriteLine($"Stoppar robotdammsugare {Brand}.");
         }
         public void PrintCleaningEnergy()
         {
-            Console.WriteLine($"Robotdammsugare {_brand} har förbrukat {_cleaningEnergy} kWh.");
+            Console.WriteLine($"Robotdammsugare {Brand} har förbrukat {CleaningEnergy} kWh.");
         }
     }
 

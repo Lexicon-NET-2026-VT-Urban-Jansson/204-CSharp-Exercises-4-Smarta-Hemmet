@@ -6,21 +6,21 @@ namespace SmartaHemmet
 {
     internal class Refrigerator(string brand, int temperature)
     {
-        private string? _brand { get; set; } = brand;
-        private int _temperature { get; set; } = temperature;
-        private int _coolingEnergy { get; set; } = 2;
+        public string? Brand { get; set; } = brand;
+        public int Temperature { get; set; } = temperature;
+        public double CoolingEnergy { get; set; } = 3.6;
 
         public void StartCooling()
         {
-            Console.WriteLine($"Startar kylskåp {_brand}, med temperatur {_temperature} °C.");
+            Console.WriteLine($"Startar kylskåp {Brand}, med temperatur {Temperature} °C.");
         }
         public void StopCooling()
         {
-            Console.WriteLine($"Stoppar kylskåp {_brand}.");
+            Console.WriteLine($"Stoppar kylskåp {Brand}.");
         }
         public void PrintCoolingEnergy()
         {
-            Console.WriteLine($"Kylskåp {_brand} har förbrukat {_coolingEnergy} kWh.");
+            Console.WriteLine($"Kylskåp {Brand} har förbrukat {CoolingEnergy} kWh.");
         }
     }
 }
