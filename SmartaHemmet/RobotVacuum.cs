@@ -4,24 +4,29 @@ using System.Text;
 
 namespace SmartaHemmet
 {
-    internal class RobotVacuum(string brand, int batteryLevel)
+    internal class RobotVacuum(int batteryLevel, string brand, string room) : Appliance(brand, room)
     {
-        public string? Brand { get; set; } = brand;
-        public int BatteryLevel { get; set; } = batteryLevel;
-        public double CleaningEnergy { get; set; } = 0.4;
+        public int BatteryLevel { get; } = batteryLevel;   // Read-only public property
+        public double CleaningEnergy { get; } = 0.4;
 
-        public void StartCleaning()
+        public override string GetInfo()
         {
-            Console.WriteLine($"Startar robotdammsugare {Brand}, med batterinvå {BatteryLevel} %.");
+            return base.GetInfo();
         }
-        public void StopCleaning()
+
+        public override void TurnOn()
         {
-            Console.WriteLine($"Stoppar robotdammsugare {Brand}.");
+            Console.WriteLine($"Robotdammsugare {base.Brand} startas i {base.Room}, med batterinvå {BatteryLevel} %.");
         }
-        public void PrintCleaningEnergy()
+
+        public override void TurnOff()
         {
-            Console.WriteLine($"Robotdammsugare {Brand} har förbrukat {CleaningEnergy} kWh per städning.");
+            Console.WriteLine($"Stänger av robotdammsugare {base.Brand} i {base.Room}.");
+        }
+
+        public override double GetDailyEnergyUsage()
+        {
+            return CleaningEnergy;
         }
     }
-
 }

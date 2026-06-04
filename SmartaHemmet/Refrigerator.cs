@@ -4,23 +4,29 @@ using System.Text;
 
 namespace SmartaHemmet
 {
-    internal class Refrigerator(string brand, int temperature)
+    internal class Refrigerator(int temperature, string brand, string room) : Appliance(brand, room)
     {
-        public string? Brand { get; set; } = brand;
-        public int Temperature { get; set; } = temperature;
-        public double CoolingEnergy { get; set; } = 3.6;
+        public int Temperature { get; } = temperature;    // Read-only public property
+        public double CoolingEnergy { get; } = 3.6;
 
-        public void StartCooling()
+        public override string GetInfo()
         {
-            Console.WriteLine($"Startar kylskåp {Brand}, med temperatur {Temperature} °C.");
+            return base.GetInfo();
         }
-        public void StopCooling()
+
+        public override void TurnOn()
         {
-            Console.WriteLine($"Stoppar kylskåp {Brand}.");
+            Console.WriteLine($"Kylskåp {base.Brand} startas i {base.Room}, med temperatur {Temperature} °C.");
         }
-        public void PrintCoolingEnergy()
+
+        public override void TurnOff()
         {
-            Console.WriteLine($"Kylskåp {Brand} har förbrukat {CoolingEnergy} kWh per dag.");
+            Console.WriteLine($"Stänger av kylskåp {base.Brand} i {base.Room}.");
+        }
+
+        public override double GetDailyEnergyUsage()
+        {
+            return CoolingEnergy;
         }
     }
 }

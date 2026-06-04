@@ -14,11 +14,11 @@ class Program
         // Skapa minst fyra objekt:
         // Washer, Refrigerator, Oven och RobotVacuum.
         // Lägg till dem i listan devices.
-        devices.Add(new Washer("Siemens iQ500", 8));
-        devices.Add(new Refrigerator("Electrolux 900", 4));
-        devices.Add(new Oven("Whirlpool OKZ9", 300));
-        devices.Add(new RobotVacuum("Roborock Qrevo Edge", 95));
-        devices.Add(new CoffeeMachine("Moccamaster One Switch", 10));
+        devices.Add(new Washer(8, "Siemens iQ500", "tvättstugan" ));
+        devices.Add(new Refrigerator(4, "Electrolux 900", "köket"));
+        devices.Add(new Oven(300, "Whirlpool OKZ9", "köket"));
+        devices.Add(new RobotVacuum(95, "Roborock Qrevo Edge", "vardagsrummet"));
+        devices.Add(new CoffeeMachine(10, "Moccamaster One Switch", "köket"));
 
         RunMorningRoutine(devices);
         Console.WriteLine();
@@ -43,36 +43,36 @@ class Program
                 // Pattern matching för att casta:
                 // Washer washer = (Washer)device;
                 case Washer washer:
-                    washer.StartWash();
-                    washer.StopWash();
+                    washer.TurnOn();
+                    washer.TurnOff();
                     break;
 
                 // Pattern matching för att casta:
                 // Refrigerator refrigerator = (Refrigerator)device;
                 case Refrigerator refrigerator:
-                    refrigerator.StartCooling();
-                    refrigerator.StopCooling();
+                    refrigerator.TurnOn();
+                    refrigerator.TurnOff();
                     break;
 
                 // Pattern matching för att casta:
                 // Oven oven = (Oven)device;
                 case Oven oven:
-                    oven.StartHeating();
-                    oven.StopHeating();
+                    oven.TurnOn();
+                    oven.TurnOff();
                     break;
 
                 // Pattern matching för att casta:
                 // RobotVacuum robotVacuum = (RobotVacuum)device;
                 case RobotVacuum robotVacuum:
-                    robotVacuum.StartCleaning();
-                    robotVacuum.StopCleaning();
+                    robotVacuum.TurnOn();
+                    robotVacuum.TurnOff();
                     break;
 
                 // Pattern matching för att casta:
                 // CoffeeMachine coffeeMachine = (CoffeeMachine)device;
                 case CoffeeMachine coffeeMachine:
-                    coffeeMachine.StartBrewing();
-                    coffeeMachine.StopBrewing();
+                    coffeeMachine.TurnOn();
+                    coffeeMachine.TurnOff();
                     break;
             }
         }
@@ -93,19 +93,19 @@ class Program
             switch (device)
             {
                 case Washer washer:
-                    washer.PrintWashEnergy();
+                    //washer.PrintWashEnergy();
                     break;
                 case Refrigerator refrigerator:
-                    refrigerator.PrintCoolingEnergy();
+                    //refrigerator.PrintCoolingEnergy();
                     break;
                 case Oven oven:
-                    oven.PrintHeatingEnergy();
+                    //oven.PrintHeatingEnergy();
                     break;
                 case RobotVacuum robotVacuum:
-                    robotVacuum.PrintCleaningEnergy();
+                    //robotVacuum.PrintCleaningEnergy();
                     break;
                 case CoffeeMachine coffeeMachine:
-                    coffeeMachine.PrintBrewingEnergy();
+                    //coffeeMachine.PrintBrewingEnergy();
                     break;
             }
         }

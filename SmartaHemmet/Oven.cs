@@ -4,23 +4,29 @@ using System.Text;
 
 namespace SmartaHemmet
 {
-    internal class Oven(string brand, int maxTemperature)
+    internal class Oven(int maxTemperature, string brand, string room) : Appliance(brand, room)
     {
-        public string? Brand { get; set; } = brand;
-        public int MaxTemperature { get; set; } = maxTemperature;
-        public double HeatingEnergy { get; set; } = 2.5;
+        public int MaxTemperature { get; } = maxTemperature;    // Read-only public property
+        public double HeatingEnergy { get; } = 2.5;
 
-        public void StartHeating()
+        public override string GetInfo()
         {
-            Console.WriteLine($"Startar ugn {Brand}, med maxtemperatur {MaxTemperature} °C.");
+            return base.GetInfo();
         }
-        public void StopHeating()
+
+        public override void TurnOn()
         {
-            Console.WriteLine($"Stoppar ugn {Brand}.");
+            Console.WriteLine($"Ugn {base.Brand} startas i {base.Room}, med maxtemperatur {MaxTemperature} °C.");
         }
-        public void PrintHeatingEnergy()
+
+        public override void TurnOff()
         {
-            Console.WriteLine($"Ugn {Brand} har förbrukat {HeatingEnergy} kWh per timme.");
+            Console.WriteLine($"Stänger av ugn {base.Brand} i {base.Room}.");
+        }
+
+        public override double GetDailyEnergyUsage()
+        {
+            return HeatingEnergy;
         }
     }
 }

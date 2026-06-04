@@ -4,23 +4,29 @@ using System.Text;
 
 namespace SmartaHemmet
 {
-    internal class CoffeeMachine(string brand, int cupsPerBrew)
+    internal class CoffeeMachine(int cupsPerBrew, string brand, string room) : Appliance(brand, room)
     {
-        public string? Brand { get; set; } = brand;
-        public int CupsPerBrew { get; set; } = cupsPerBrew;
-        public double BrewingEnergy { get; set; } = 0.3;
+        public int CupsPerBrew { get; } = cupsPerBrew;    // Read-only public property
+        public double BrewingEnergy { get; } = 0.3;
 
-        public void StartBrewing()
+        public override string GetInfo()
         {
-            Console.WriteLine($"Startar kaffemaskin {Brand}, med kapacitet {CupsPerBrew} koppar per bryggning.");
+            return base.GetInfo();
         }
-        public void StopBrewing()
+
+        public override void TurnOn()
         {
-            Console.WriteLine($"Stoppar kaffemaskin {Brand}.");
+            Console.WriteLine($"Kaffemaskin {base.Brand} startas i {base.Room}, med kapacitet {CupsPerBrew} koppar per bryggning.");
         }
-        public void PrintBrewingEnergy()
+
+        public override void TurnOff()
         {
-            Console.WriteLine($"Kaffemaskin {Brand} har förbrukat {BrewingEnergy} kWh per bryggning.");
+            Console.WriteLine($"Stänger av kaffemaskin {base.Brand} i {base.Room}.");
+        }
+
+        public override double GetDailyEnergyUsage()
+        {
+            return BrewingEnergy;
         }
     }
 }

@@ -5,22 +5,28 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace SmartaHemmet
 {
-    internal class Washer(string brand, int capacityKg)
+    internal class Washer(int capacityKg, string brand, string room) : Appliance(brand, room)
     {
-        public string? Brand { get; set; } = brand;
-        public int CapacityKg { get; set; } = capacityKg;
-        public double WashEnergy { get; set; } = 1.2;
+        public int CapacityKg { get; } = capacityKg;    // Read-only public property
+        public double WashEnergy { get; } = 1.2;
 
-        public void StartWash() {
-            Console.WriteLine($"Startar tvättmaskin {Brand}, med kapacitet {CapacityKg} kg.");
+        public override string GetInfo() {
+            return base.GetInfo();
         }
-        public void StopWash()
+
+        public override void TurnOn()
         {
-            Console.WriteLine($"Stoppar tvättmaskin {Brand}.");
+            Console.WriteLine($"Tvättmaskin {base.Brand} startar ett tvättprogram i {base.Room}.");
         }
-        public void PrintWashEnergy()
+
+        public override void TurnOff()
         {
-            Console.WriteLine($"Tvättmaskin {Brand} har förbrukat {WashEnergy} kWh per tvätt.");
+            Console.WriteLine($"Stänger av tvättmaskin {base.Brand} i {base.Room}.");
+        }
+
+        public override double GetDailyEnergyUsage()
+        {
+            return WashEnergy;
         }
     }
 }
