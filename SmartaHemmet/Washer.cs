@@ -16,7 +16,7 @@ namespace SmartaHemmet
 
         public override void TurnOn()
         {
-            Console.WriteLine($"Tvättmaskin {base.Brand} startar ett tvättprogram i {base.Room}.");
+            Console.WriteLine($"Tvättmaskin {base.Brand} startar ett tvättprogram i {base.Room}, med kapacitet {CapacityKg} kg per tvätt.");
         }
 
         public override void TurnOff()

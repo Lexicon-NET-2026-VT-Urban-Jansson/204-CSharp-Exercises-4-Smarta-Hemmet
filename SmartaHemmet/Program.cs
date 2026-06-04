@@ -17,6 +17,7 @@ class Program
         controller.AddDevice(new Oven(300, "Whirlpool OKZ9", "köket"));
         controller.AddDevice(new RobotVacuum(95, "Roborock Qrevo Edge", "vardagsrummet"));
         controller.AddDevice(new CoffeeMachine(10, "Moccamaster One Switch", "köket"));
+        controller.AddDevice(new Dishwasher(15, "Bosch Serie 2", "köket"));
 
         controller.PrintStatusReport();
         Console.WriteLine();
@@ -33,22 +34,9 @@ class Program
 }
 
 // ----------------------------------------------------------------------------
-// *** FRÅGOR & SVAR - Frågor efter Del 5 ***
+// *** FRÅGOR & SVAR - Efter Del 7 ***
 // ----------------------------------------------------------------------------
 /*
-
-1. Varför fungerar device.TurnOn() trots att device har typen Appliance?
-Därför att Appliance har en virtuell metod som heter TurnOn(), 
-som det sen görs override på i själva device’n (typ Washer), 
-vilket möjliggör specifik anpassning för just den maskinen. 
-Men rent generellt funkar det också att bara köra TurnOn() från Appliance, 
-som ger |Console.WriteLine($"Startar {Brand}.");| då Brand är ett property i Appliance.
-
-2. Vilken metod körs om objektet egentligen är en RobotVacuum?
-RobotVacuum.TurnOn();
-
-3. Vad blev bättre jämfört med List<object>?
-Det blev mycket bättre, då slipper switch'a och cast'a för att hitta rätt device.
 
 */
 // ----------------------------------------------------------------------------
