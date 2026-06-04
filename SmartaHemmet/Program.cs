@@ -9,30 +9,26 @@ class Program
     // ------------------------------------------------------------------------
     static void Main()
     {
+        SmartHomeController controller = new SmartHomeController();
         // TODO-DONE:
-        // Byt ut den gamla listan med object -> Appliance.
-        List<Appliance> devices = new List<Appliance>();
+        // Lägg till minst fem olika apparater.
+        controller.AddDevice(new Washer(8, "Siemens iQ500", "tvättstugan"));
+        controller.AddDevice(new Refrigerator(4, "Electrolux 900", "köket"));
+        controller.AddDevice(new Oven(300, "Whirlpool OKZ9", "köket"));
+        controller.AddDevice(new RobotVacuum(95, "Roborock Qrevo Edge", "vardagsrummet"));
+        controller.AddDevice(new CoffeeMachine(10, "Moccamaster One Switch", "köket"));
 
-        // TODO-DONE:
-        // Lägg till Washer, Refrigerator, Oven, RobotVacuum och CoffeeMachine.
-        devices.Add(new Washer(8, "Siemens iQ500", "tvättstugan"));
-        devices.Add(new Refrigerator(4, "Electrolux 900", "köket"));
-        devices.Add(new Oven(300, "Whirlpool OKZ9", "köket"));
-        devices.Add(new RobotVacuum(95, "Roborock Qrevo Edge", "vardagsrummet"));
-        devices.Add(new CoffeeMachine(10, "Moccamaster One Switch", "köket"));
+        controller.PrintStatusReport();
+        Console.WriteLine();
 
-        foreach (Appliance device in devices)
-        {
-            // TODO-DONE:
-            // Skriv ut info.
-            // Starta apparaten.
-            // Skriv ut energiförbrukning.
-            // Stäng av apparaten.        }
-            device.GetInfo();
-            device.TurnOn();
-            Console.WriteLine($"Energiförbrukningen för {device.Brand} är {device.GetDailyEnergyUsage()} kWh.");
-            device.TurnOff();
-        }
+        controller.TurnOnAll();
+        Console.WriteLine();
+        
+        double totalEnergy = controller.GetTotalDailyEnergyUsage();
+        Console.WriteLine($"Total daglig energiförbrukning: {totalEnergy} kWh.");
+        Console.WriteLine();
+
+        controller.TurnOffAll();
     }
 }
 

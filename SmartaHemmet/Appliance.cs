@@ -22,7 +22,8 @@ namespace SmartaHemmet
             // TODO-DONE:
             // Returnera en generell text om apparaten.
             // Exempel: "LG in Laundry room"
-            return $"{Brand} är i {Room}.";
+            string isOn = IsOn ? "på" : "av";
+            return $"{Brand} är {isOn} i {Room}.";
         }
         public virtual void TurnOn()
         {
