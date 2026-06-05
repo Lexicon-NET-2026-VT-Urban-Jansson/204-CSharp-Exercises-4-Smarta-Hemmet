@@ -19,22 +19,25 @@ class Program
         controller.AddDevice(new CoffeeMachine(10, "Moccamaster One Switch", "köket"));
         controller.AddDevice(new Dishwasher(15, "Bosch Serie 2", "köket"));
 
-        controller.PrintStatusReport();
+        controller.ScheduleDevice(DateTime.Now.AddHours(2));
         Console.WriteLine();
 
-        controller.TurnOnAll();
-        Console.WriteLine();
-        
-        double totalEnergy = controller.GetTotalDailyEnergyUsage();
-        Console.WriteLine($"Total daglig energiförbrukning: {totalEnergy} kWh.");
-        Console.WriteLine();
+        //controller.PrintStatusReport();
+        //Console.WriteLine();
 
-        controller.TurnOffAll();
+        //controller.TurnOnAll();
+        //Console.WriteLine();
+
+        //double totalEnergy = controller.GetTotalDailyEnergyUsage();
+        //Console.WriteLine($"Total daglig energiförbrukning: {totalEnergy} kWh.");
+        //Console.WriteLine();
+
+        //controller.TurnOffAll();
     }
 }
 
 // ----------------------------------------------------------------------------
-// *** FRÅGOR & SVAR - Efter Del 7 ***
+// *** FRÅGOR & SVAR - Efter Del 8 ***
 // ----------------------------------------------------------------------------
 /*
 

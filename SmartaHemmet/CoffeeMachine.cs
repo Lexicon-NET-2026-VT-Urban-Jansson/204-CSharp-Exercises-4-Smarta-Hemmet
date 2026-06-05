@@ -4,10 +4,18 @@ using System.Text;
 
 namespace SmartaHemmet
 {
-    internal class CoffeeMachine(int cupsPerBrew, string brand, string room) : Appliance(brand, room)
+    internal class CoffeeMachine(int cupsPerBrew, string brand, string room) : Appliance(brand, room), ISchedulable
     {
-        public int CupsPerBrew { get; } = cupsPerBrew;    // Read-only public property
+        public int CupsPerBrew { get; } = cupsPerBrew;
         public double BrewingEnergy { get; } = 0.3;
+        public DateTime NextRun { get; set; }
+
+        public override string Schedule(DateTime time)
+        {
+            NextRun = time;
+            return $"Kaffemaskin {base.Brand} har schemalagts att börja brygga kaffe " +
+                NextRun.ToString("ddd d MMM") + " kl. " + NextRun.ToString("HH:mm") + ".";
+        }
 
         public override string GetInfo()
         {

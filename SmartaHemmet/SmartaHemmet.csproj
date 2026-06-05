@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Interface1.cs" />
     <Compile Remove="WasherBase.cs" />
   </ItemGroup>
 

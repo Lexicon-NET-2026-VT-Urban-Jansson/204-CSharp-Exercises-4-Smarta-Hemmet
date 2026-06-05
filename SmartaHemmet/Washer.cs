@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace SmartaHemmet
 {
-    internal class Washer(int capacityKg, string brand, string room) : Appliance(brand, room)
+    internal class Washer(int capacityKg, string brand, string room) : Appliance(brand, room), ISchedulable
     {
-        public int CapacityKg { get; } = capacityKg;    // Read-only public property
+        public int CapacityKg { get; } = capacityKg;
         public double WashEnergy { get; } = 1.2;
+        public DateTime NextRun { get; set; }
+
+        public override string Schedule(DateTime time)
+        {
+            NextRun = time;
+            return $"Tvättmaskin {base.Brand} har schemalagts att starta ett tvättprogram " +
+                NextRun.ToString("ddd d MMM") + " kl. " + NextRun.ToString("HH:mm") + ".";
+        }
 
         public override string GetInfo() {
             return base.GetInfo();

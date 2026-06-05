@@ -17,6 +17,11 @@ namespace SmartaHemmet
             Room = room;
             IsOn = false;
         }
+        public virtual string Schedule(DateTime time)
+        {
+            return "Något har gått fel. Den här metoden ska det göras override på i ISchedulable klassen.";
+        }
+
         public virtual string GetInfo()
         {
             // TODO-DONE:
@@ -30,6 +35,7 @@ namespace SmartaHemmet
             // TODO-DONE:
             // Sätt IsOn till true.
             // Skriv ut ett generellt startmeddelande.
+            IsOn = true;
             Console.WriteLine($"Startar {Brand}.");
         }
         public virtual void TurnOff()
@@ -37,6 +43,7 @@ namespace SmartaHemmet
             // TODO-DONE:
             // Sätt IsOn till false.
             // Skriv ut ett generellt stoppmeddelande.
+            IsOn = false;
             Console.WriteLine($"Stoppar {Brand}.");
         }
         public virtual double GetDailyEnergyUsage()

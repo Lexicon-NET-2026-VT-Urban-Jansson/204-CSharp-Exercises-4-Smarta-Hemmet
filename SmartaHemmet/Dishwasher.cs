@@ -6,7 +6,7 @@ namespace SmartaHemmet
 {
     internal class Dishwasher(int capacityPlaceSettings, string brand, string room) : Appliance(brand, room)
     {
-        public int CapacityPlaceSettings { get; } = capacityPlaceSettings;    // Read-only public property
+        public int CapacityPlaceSettings { get; } = capacityPlaceSettings;
         public double DishwashEnergy { get; } = 1.4;
 
         public override string GetInfo()

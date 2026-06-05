@@ -8,6 +8,13 @@ namespace SmartaHemmet
     {
         private List<Appliance> _devices = new List<Appliance>();
 
+        
+        public void ScheduleDevice(DateTime time)
+        {
+            foreach (Appliance device in _devices) if (device is ISchedulable)
+                    Console.WriteLine(device.Schedule(time));
+        }
+
         public void AddDevice(Appliance device)
         {
             // TODO-DONE:

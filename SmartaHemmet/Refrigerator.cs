@@ -6,7 +6,7 @@ namespace SmartaHemmet
 {
     internal class Refrigerator(int temperature, string brand, string room) : Appliance(brand, room)
     {
-        public int Temperature { get; } = temperature;    // Read-only public property
+        public int Temperature { get; } = temperature;
         public double CoolingEnergy { get; } = 3.6;
 
         public override string GetInfo()
