@@ -17,10 +17,9 @@ namespace SmartaHemmet
             Room = room;
             IsOn = false;
         }
-        public virtual string Schedule(DateTime time)
-        {
-            return "Något har gått fel. Den här metoden ska det göras override på i ISchedulable klassen.";
-        }
+
+        // OBS! Detta ska INTE ligga här! Då kommer ALLA få en Schedule() = FEL!
+        //public virtual void Schedule(DateTime time) { }
 
         public virtual string GetInfo()
         {

@@ -10,11 +10,11 @@ namespace SmartaHemmet
         public double BrewingEnergy { get; } = 0.3;
         public DateTime NextRun { get; set; }
 
-        public override string Schedule(DateTime time)
+        public void Schedule(DateTime time)
         {
             NextRun = time;
-            return $"Kaffemaskin {base.Brand} har schemalagts att börja brygga kaffe " +
-                NextRun.ToString("ddd d MMM") + " kl. " + NextRun.ToString("HH:mm") + ".";
+            Console.WriteLine($"Kaffemaskin {base.Brand} har schemalagts att börja brygga kaffe " +
+                NextRun.ToString("ddd d MMM") + " kl. " + NextRun.ToString("HH:mm") + ".");
         }
 
         public override string GetInfo()

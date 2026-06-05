@@ -7,8 +7,6 @@ namespace SmartaHemmet
     public interface ISchedulable
     {
         DateTime NextRun { get; set; }
-        string Schedule(DateTime time);
-        // void funkar inte för mig ...
-        // void Schedule(DateTime time);
+        void Schedule(DateTime time);
     }
 }

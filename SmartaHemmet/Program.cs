@@ -37,10 +37,34 @@ class Program
 }
 
 // ----------------------------------------------------------------------------
-// *** FRÅGOR & SVAR - Efter Del 8 ***
+// *** FRÅGOR & SVAR - Efter Del 9 ***
 // ----------------------------------------------------------------------------
 /*
+0. Varför kompilerar inte detta? Svara som kommentar.
+Därför att Schedule(time) finns inte Appliance, 
+utan ligger specifikt i klasser med interfacet ISchedulable.
 
+1. Varför kan vi inte anropa Schedule() direkt på en variabel av typen Appliance?
+Därför att Schedule(time) inte finns i Appliance.
+
+2. Varför fungerar det efter att vi castar till ISchedulable?
+Därför alla klasser med interfacet ISchedulable med *måste* implementera 
+"void Schedule(DateTime time);", annars får vi kompilatorfel:
+'Washer' does not implement interface member 'ISchedulable.Schedule(DateTime)'
+
+3. Vad betyder det att RobotVacuum både är en Appliance och en ISchedulable?
+Appliance är bas-klassen för RobotVacuum, med många snitsiga metoder. 
+ISchedulable är interfacet för RobotVacuum, som sätter upp regler för vad 
+som måste implementeras i RobotVacuum.
+
+4. Varför ska inte Schedule() ligga direkt i Appliance?
+Jag gjorde tyvärr det först, men det blir helt fel, för då kommer ALLA som har 
+Appliance som bas-klass även få tillgång till Appliance version av Schedule(), 
+vilket ju enbart var tänkt för de som har interface ISchedulable.
+
+5. Vad är skillnaden mellan arv och interface i det här exemplet?
+Med arv erhålls properties och metoder, medan interface sätter upp regler 
+för properties och metoder.
 */
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------

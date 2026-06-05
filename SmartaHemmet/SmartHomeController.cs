@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SmartaHemmet
 {
@@ -11,8 +12,19 @@ namespace SmartaHemmet
         
         public void ScheduleDevice(DateTime time)
         {
-            foreach (Appliance device in _devices) if (device is ISchedulable)
-                    Console.WriteLine(device.Schedule(time));
+            foreach (Appliance device in _devices)
+            {
+                // Casta: device -> ISchedulable -> schedulable
+                if (device is ISchedulable schedulable) schedulable.Schedule(time);
+            }
+
+            // Detta funkar inte!
+            //
+            // foreach (Appliance device in _devices)
+            // {
+            //     // INTE Castat!
+            //     device.Schedule(time);
+            // }
         }
 
         public void AddDevice(Appliance device)

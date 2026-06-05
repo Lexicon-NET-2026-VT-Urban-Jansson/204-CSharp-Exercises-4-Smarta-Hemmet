@@ -10,11 +10,11 @@ namespace SmartaHemmet
         public double WashEnergy { get; } = 1.2;
         public DateTime NextRun { get; set; }
 
-        public override string Schedule(DateTime time)
+        public void Schedule(DateTime time)
         {
             NextRun = time;
-            return $"Tvättmaskin {base.Brand} har schemalagts att starta ett tvättprogram " +
-                NextRun.ToString("ddd d MMM") + " kl. " + NextRun.ToString("HH:mm") + ".";
+            Console.WriteLine($"Tvättmaskin {base.Brand} har schemalagts att starta ett tvättprogram " +
+                NextRun.ToString("ddd d MMM") + " kl. " + NextRun.ToString("HH:mm") + ".");
         }
 
         public override string GetInfo() {
