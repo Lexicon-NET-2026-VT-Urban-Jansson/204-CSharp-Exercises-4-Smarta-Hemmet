@@ -29,6 +29,12 @@ namespace SmartaHemmet
             string isOn = IsOn ? "på" : "av";
             return $"{Brand} är {isOn} i {Room}.";
         }
+        //
+        // Har vi inte med *virtual* här, får vi felmeddelande:
+        //
+        // 'Dishwasher.TurnOn()': cannot override inherited member
+        // 'Appliance.TurnOn()' because it is not marked virtual,
+        // abstract, or override
         public virtual void TurnOn()
         {
             // TODO-DONE:

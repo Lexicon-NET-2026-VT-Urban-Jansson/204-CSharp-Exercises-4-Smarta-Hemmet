@@ -20,7 +20,8 @@ namespace SmartaHemmet
         public override string GetInfo() {
             return base.GetInfo();
         }
-
+        //
+        // C# föreslår jag ska använda override för att "köra över" 'Appliance.TurnOn()'.
         public override void TurnOn()
         {
             Console.WriteLine($"Tvättmaskin {base.Brand} startar ett tvättprogram i {base.Room}, med kapacitet {CapacityKg} kg per tvätt.");
