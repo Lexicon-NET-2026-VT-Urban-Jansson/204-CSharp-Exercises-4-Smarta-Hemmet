@@ -10,6 +10,27 @@ namespace SmartaHemmet
     {
         private List<Appliance> _devices = new List<Appliance>();
 
+        public Appliance FindDeviceByBrand(string brand)
+        {
+            // TODO:
+            // Returnera första apparaten med rätt brand.
+            // Om ingen finns kan du returnera null,
+            // eller kasta ett eget felmeddelande.
+            //throw new NotImplementedException();   
+            
+            Appliance foundDevice = null;
+            foreach (Appliance device in _devices)
+            {
+                if (device.Brand == brand)
+                {
+                    foundDevice = device;
+                    if (device is ISchedulable schedulable) schedulable.Schedule(DateTime.Now.AddHours(24));
+                    break;
+                }
+            }
+            return foundDevice!;
+        }
+
         internal List<ISchedulable> GetSchedulableDevices()
         {
             List<ISchedulable> result = new List<ISchedulable>();
@@ -22,7 +43,6 @@ namespace SmartaHemmet
             }
             return result;
         }
-
 
         public void ScheduleDevice(DateTime time)
         {

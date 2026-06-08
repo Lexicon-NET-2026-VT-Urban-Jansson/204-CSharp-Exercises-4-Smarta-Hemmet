@@ -19,19 +19,25 @@ class Program
         controller.AddDevice(new CoffeeMachine(10, "Moccamaster One Switch", "köket"));
         controller.AddDevice(new Dishwasher(15, "Bosch Serie 2", "köket"));
 
-        var flexRun = DateTime.Now;
-        List <ISchedulable> schedulableDevices = controller.GetSchedulableDevices();
-        foreach (ISchedulable schedulable in schedulableDevices)
-        {
-            // TODO-DONE:
-            // Skriv ut NextRun eller schemalägg apparaten.
-            //
-            // Vill köra maskinerna nästa dag...
-            var scheduledTime = flexRun.AddHours(24);
-            schedulable.Schedule(scheduledTime);
-            // Med lite mellanrum...
-            flexRun = flexRun.AddHours(2);
-        }
+        Appliance foundDevice = controller.FindDeviceByBrand("Moccamaster One Switch"); // "Electrolux 900" != schedulable
+        if (foundDevice != null) foundDevice.TurnOn();
+        Console.WriteLine();
+
+        //var flexRun = DateTime.Now;
+        //List <ISchedulable> schedulableDevices = controller.GetSchedulableDevices();
+        //foreach (ISchedulable schedulable in schedulableDevices)
+        //{
+        //    // TODO-DONE:
+        //    // Skriv ut NextRun eller schemalägg apparaten.
+        //    //
+        //    // Vill köra maskinerna nästa dag...
+        //    var scheduledTime = flexRun.AddHours(24);
+        //    schedulable.Schedule(scheduledTime);
+        //    // Med lite mellanrum...
+        //    flexRun = flexRun.AddHours(2);
+        //}
+        //Console.WriteLine();
+
 
         //controller.ScheduleDevice(DateTime.Now.AddHours(2));
         //Console.WriteLine();
