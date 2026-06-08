@@ -16,7 +16,7 @@ namespace SmartaHemmet
 
         public override void TurnOn()
         {
-            Console.WriteLine($"Kylskåp {base.Brand} startas i {base.Room}, med temperatur {Temperature} °C.");
+            Console.WriteLine($"Kylskåp {base.Brand} startas i {base.Room}, med temperatur {Temperature}°C.");
         }
 
         public override void TurnOff()

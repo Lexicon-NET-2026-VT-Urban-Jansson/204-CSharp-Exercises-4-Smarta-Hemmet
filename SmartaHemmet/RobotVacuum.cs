@@ -24,7 +24,7 @@ namespace SmartaHemmet
 
         public override void TurnOn()
         {
-            Console.WriteLine($"Robotdammsugare {base.Brand} startas i {base.Room}, med batterinvå {BatteryLevel} %.");
+            Console.WriteLine($"Robotdammsugare {base.Brand} startas i {base.Room}, med batterinvå {BatteryLevel}%.");
         }
 
         public override void TurnOff()

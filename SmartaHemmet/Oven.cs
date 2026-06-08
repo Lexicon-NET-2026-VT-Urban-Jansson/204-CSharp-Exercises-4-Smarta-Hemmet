@@ -17,7 +17,7 @@ namespace SmartaHemmet
         public override void TurnOn()
         //public sealed override void TurnOn()
         {
-            Console.WriteLine($"Ugn {base.Brand} startas i {base.Room}, med maxtemperatur {MaxTemperature} °C.");
+            Console.WriteLine($"Ugn {base.Brand} startas i {base.Room}, med maxtemperatur {MaxTemperature}°C.");
         }
 
         public override void TurnOff()
