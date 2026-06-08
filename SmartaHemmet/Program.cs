@@ -19,16 +19,30 @@ class Program
         controller.AddDevice(new CoffeeMachine(10, "Moccamaster One Switch", "köket"));
         controller.AddDevice(new Dishwasher(15, "Bosch Serie 2", "köket"));
 
-        controller.ScheduleDevice(DateTime.Now.AddHours(2));
-        Console.WriteLine();
+        var flexRun = DateTime.Now;
+        List <ISchedulable> schedulableDevices = controller.GetSchedulableDevices();
+        foreach (ISchedulable schedulable in schedulableDevices)
+        {
+            // TODO-DONE:
+            // Skriv ut NextRun eller schemalägg apparaten.
+            //
+            // Vill köra maskinerna nästa dag...
+            var scheduledTime = flexRun.AddHours(24);
+            schedulable.Schedule(scheduledTime);
+            // Med lite mellanrum...
+            flexRun = flexRun.AddHours(2);
+        }
 
-        SmartLamp lamp1 = new SmartLamp("IKEA", "Hallway", 80);
-        Appliance lamp2 = lamp1;
-        lamp1.TurnOn();
-        lamp2.TurnOn();
+        //controller.ScheduleDevice(DateTime.Now.AddHours(2));
+        //Console.WriteLine();
 
-        PizzaOven pizzaOven = new PizzaOven(450, "Pop Pizza", "köket");
-        pizzaOven.TurnOn();
+        //SmartLamp lamp1 = new SmartLamp("IKEA", "Hallway", 80);
+        //Appliance lamp2 = lamp1;
+        //lamp1.TurnOn();
+        //lamp2.TurnOn();
+
+        //PizzaOven pizzaOven = new PizzaOven(450, "Pop Pizza", "köket");
+        //pizzaOven.TurnOn();
 
         //controller.PrintStatusReport();
         //Console.WriteLine();
@@ -164,10 +178,22 @@ Override utökar implementeringen med arv från basklassen.
 "A member cannot override a sealed inherited member."
 
 3. När kan det vara rimligt att använda sealed override?
-Om man vid arv vill hindra att det i subklass görs override på utvalda metoder och/eller properties i en basklass.
+Om man vid arv vill hindra att det i subklass görs override på utvalda metoder 
+och/eller properties i en basklass.
 
 4. Vad kan PizzaOven fortfarande göra i stället? Kan den override:a någon annan metod?
 Ja, PizzaOven kan göra override på GetInfo(), TurnOff() och GetDailyEnergyUsage().
+
+*/
+// ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
+// *** FRÅGOR & SVAR - Efter Del 13: Labb ***
+// ----------------------------------------------------------------------------
+/*
+Fråga: Varför kan listan vara List<ISchedulable> även om objekten egentligen är olika klasser?
+Därför att GetSchedulableDevices() returnerar bara objekt som är ISchedulable.
 
 */
 // ----------------------------------------------------------------------------

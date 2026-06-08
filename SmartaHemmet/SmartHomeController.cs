@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Timers;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace SmartaHemmet
@@ -9,7 +10,20 @@ namespace SmartaHemmet
     {
         private List<Appliance> _devices = new List<Appliance>();
 
-        
+        internal List<ISchedulable> GetSchedulableDevices()
+        {
+            List<ISchedulable> result = new List<ISchedulable>();
+            foreach (Appliance device in _devices)
+            {
+                // TODO-DONE:
+                // Om device implementerar ISchedulable,
+                // lägg till det i result.
+                if (device is ISchedulable schedulable) result.Add(schedulable);
+            }
+            return result;
+        }
+
+
         public void ScheduleDevice(DateTime time)
         {
             foreach (Appliance device in _devices)
@@ -56,7 +70,7 @@ namespace SmartaHemmet
         }
         public double GetTotalDailyEnergyUsage()
         {
-            // TODO:
+            // TODO-DONE:
             // Räkna ihop GetDailyEnergyUsage() för alla devices.
             // Returnera totalsumman.
             double totalEnergy = 0;
