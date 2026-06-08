@@ -22,6 +22,11 @@ class Program
         controller.ScheduleDevice(DateTime.Now.AddHours(2));
         Console.WriteLine();
 
+        SmartLamp lamp1 = new SmartLamp("IKEA", "Hallway", 80);
+        Appliance lamp2 = lamp1;
+        lamp1.TurnOn();
+        lamp2.TurnOn();
+
         //controller.PrintStatusReport();
         //Console.WriteLine();
 
@@ -35,6 +40,49 @@ class Program
         //controller.TurnOffAll();
     }
 }
+
+
+// ----------------------------------------------------------------------------
+// *** FRÅGOR & SVAR  - Efter Del 1 ***
+// ----------------------------------------------------------------------------
+/*
+1. Varför behövde du kontrollera vilken typ varje objekt hade?
+Utan typen kommer man inte åt metoderna.
+
+2. Vad händer om du lägger till en ny klass CoffeeMachine?
+Jag får ett nytt objekt i listan: List<object> devices
+
+3. Vilka metoder måste du ändra om du lägger till CoffeeMachine?
+Main, RunMorningRoutine, ReportAllEnergy + metoderna i nya klassen CoffeeMachine.
+
+4. Vad är problemet med att listan är List<object>?
+Den är inte generell, om vi kört List<T> kunde vi stoppat in vad som helst, bananer, hundar, etc.
+
+5. Vad händer om du råkar glömma en apparattyp i ReportAllEnergy()?
+Energiåtgången för den apparaten kommer inte rapporteras. 
+*/
+// ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
+// *** FRÅGOR & SVAR  - Efter Del 5 ***
+// ----------------------------------------------------------------------------
+/*
+1. Varför fungerar device.TurnOn() trots att device har typen Appliance?
+Därför att Appliance har en virtuell metod som heter TurnOn(), 
+som det sen görs override på i själva device’n (typ Washer), 
+vilket möjliggör specifik anpassning för just den maskinen. 
+Men rent generellt funkar det också att bara köra TurnOn() från Appliance, 
+som ger |Console.WriteLine($"Startar {Brand}.");| då Brand är ett property i Appliance.
+
+2. Vilken metod körs om objektet egentligen är en RobotVacuum?
+RobotVacuum.TurnOn();
+
+3. Vad blev bättre jämfört med List<object>?
+Det blev mycket bättre, då slipper switch'a och cast'a för att hitta rätt device.
+*/
+// ----------------------------------------------------------------------------
+
 
 // ----------------------------------------------------------------------------
 // *** FRÅGOR & SVAR - Efter Del 9 ***
@@ -67,4 +115,36 @@ Med arv erhålls properties och metoder, medan interface sätter upp regler
 för properties och metoder.
 */
 // ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
+// *** FRÅGOR & SVAR - Efter Del 11: Labb ***
+// ----------------------------------------------------------------------------
+/*
+1. Blir utskriften samma?
+Nej.
+
+2. Vilken metod körs när variabeln har typen SmartLamp?
+SmartLamp -> TurnOn()
+
+3. Vilken metod körs när variabeln har typen Appliance?
+Appliance -> TurnOn()
+
+4. Varför är detta farligt eller förvirrande?
+Kan bli riktigt bökigt, om det är mycket kod, 
+att hålla reda på vad som är castat till vad (eller inte).
+
+5. Vad händer om du byter new till override?
+Då beter sig SmartLamp som 'förväntat', 
+dvs den kör samma kod oavsett casting.
+
+Skriv en kommentar som förklarar detta med dina egna ord:
+// new gömmer basklassens metod.
+New skapar en ny instans av 'överklassen' med samma namn, 
+och döljer därmed basklassen.
+
+// override ersätter basklassens metod polymorfiskt.
+Override utökar implementeringen med arv från basklassen.
+
+*/
 // ----------------------------------------------------------------------------
