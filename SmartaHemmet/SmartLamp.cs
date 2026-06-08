@@ -14,7 +14,7 @@ namespace SmartaHemmet
             Brightness = brightness;
         }
         public override void TurnOn()
-        // public new void TurnOn()
+        //public new void TurnOn()
         {
             // TODO-DONE:
             // Skriv ut att lampan tänds.

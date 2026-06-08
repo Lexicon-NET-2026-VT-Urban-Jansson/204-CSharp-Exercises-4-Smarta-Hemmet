@@ -27,6 +27,9 @@ class Program
         lamp1.TurnOn();
         lamp2.TurnOn();
 
+        PizzaOven pizzaOven = new PizzaOven(450, "Pop Pizza", "köket");
+        pizzaOven.TurnOn();
+
         //controller.PrintStatusReport();
         //Console.WriteLine();
 
@@ -145,6 +148,26 @@ och döljer därmed basklassen.
 
 // override ersätter basklassens metod polymorfiskt.
 Override utökar implementeringen med arv från basklassen.
+
+*/
+// ----------------------------------------------------------------------------
+
+
+// ----------------------------------------------------------------------------
+// *** FRÅGOR & SVAR - Efter Del 12: Labb ***
+// ----------------------------------------------------------------------------
+/*
+1. Vad säger kompilatorn?
+"cannot override inherited member because it is sealed"
+
+2. Varför får PizzaOven inte override:a TurnOn()?
+"A member cannot override a sealed inherited member."
+
+3. När kan det vara rimligt att använda sealed override?
+Om man vid arv vill hindra att det i subklass görs override på utvalda metoder och/eller properties i en basklass.
+
+4. Vad kan PizzaOven fortfarande göra i stället? Kan den override:a någon annan metod?
+Ja, PizzaOven kan göra override på GetInfo(), TurnOff() och GetDailyEnergyUsage().
 
 */
 // ----------------------------------------------------------------------------
